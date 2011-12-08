@@ -31,7 +31,7 @@ extern "C" {
 #define MURMURHASH3_OUTPUT_LENGTH	16
 
 
-static function_entry murmurhash3_functions[] = {
+static zend_function_entry murmurhash3_functions[] = {
     PHP_FE(murmurhash3, NULL)
     {NULL, NULL, NULL}
 };
