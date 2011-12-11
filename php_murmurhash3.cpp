@@ -71,17 +71,18 @@ void c2h(uint8_t c, char *r)
 PHP_FUNCTION(murmurhash3)
 {
     char *key;
+    int key_len;
     long seed;
     char output[MURMURHASH3_OUTPUT_LENGTH + 1];
     char result[MURMURHASH3_OUTPUT_LENGTH * 2 + 1];
 
     // Parse the input parameters
-    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "sl", &key, &seed) == FAILURE) {
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "sl", &key, &key_len, &seed) == FAILURE) {
         RETURN_NULL();
     }
 
     // Calculate the hash
-    MurmurHash3_x64_128 ( key, strlen(key), (uint32_t)seed, output );
+    MurmurHash3_x64_128 ( key, key_len, (uint32_t)seed, output );
     output[MURMURHASH3_OUTPUT_LENGTH] = 0;
 
     // Convert to HEX
