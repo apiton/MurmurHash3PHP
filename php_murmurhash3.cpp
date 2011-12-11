@@ -72,11 +72,11 @@ PHP_FUNCTION(murmurhash3)
 
     // Parse the input parameters
     if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s|l", &key, &seed) == FAILURE) {
-        return;
+        zend_error(E_ERROR, "murmurhash3 expects a string followed by an optional long!");
     }
 
     // Calculate the hash
-    MurmurHash3_x64_128 ( key, strlen(key), (uint32_t)seed, output );
+    MurmurHash3_x64_128 (key, strlen(key), (uint32_t)seed, output );
     output[MURMURHASH3_OUTPUT_LENGTH] = 0;
 
     // Convert to HEX
