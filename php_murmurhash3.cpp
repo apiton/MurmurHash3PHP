@@ -42,7 +42,7 @@ zend_module_entry murmurhash3_module_entry = {
     NULL,
     NULL,
     NULL,
-    PHP_MINFO(murmurhash3),
+    PHP_MINFO(murmurhash3_info),
     PHP_MURMURHASH3_VERSION,
     STANDARD_MODULE_PROPERTIES
 };
@@ -70,7 +70,7 @@ PHP_FUNCTION(murmurhash3)
 
     // Parse the input parameters
     if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &key, &seed) == FAILURE) {
-        RETURN_NULL();
+        return;
     }
 
     // Calculate the hash
@@ -88,7 +88,7 @@ PHP_FUNCTION(murmurhash3)
 }
 
 // Be a good citizen and populate phpinfo()
-PHP_MINFO_FUNCTION(murmurhash3)
+PHP_MINFO_FUNCTION(murmurhash3_info)
 {
   php_info_print_table_start();
   php_info_print_table_row(2, "murmurhash3 support", "enabled");
