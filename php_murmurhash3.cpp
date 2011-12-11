@@ -71,7 +71,7 @@ PHP_FUNCTION(murmurhash3)
     char result[MURMURHASH3_OUTPUT_LENGTH * 2 + 1];
 
     // Parse the input parameters
-    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &key, &seed) == FAILURE) {
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s|l", &key, &seed) == FAILURE) {
         return;
     }
 
@@ -93,8 +93,8 @@ PHP_FUNCTION(murmurhash3)
 PHP_MINFO_FUNCTION(murmurhash3_info)
 {
   php_info_print_table_start();
-  php_info_print_table_row(2, "murmurhash3 support", "enabled");
-  php_info_print_table_row(2, "version", "diego:12/11/2011");
+  php_info_print_table_row(2, "murmurhash3_support", "enabled");
+  php_info_print_table_row(2, "murmurhash3_version", "diego:12/11/2011");
   php_info_print_table_end();
   DISPLAY_INI_ENTRIES();
 }     
