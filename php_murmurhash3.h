@@ -24,6 +24,7 @@
   #define PHP_MURMURHASH3_EXTNAME "murmurhash3"
 
   PHP_FUNCTION(murmurhash3);
+  PHP_MINFO_FUNCTION(murmurhash3);
 
   extern zend_module_entry murmurhash3_module_entry;
   #define phpext_murmurhash3_ptr &murmurhash3_module_entry
