@@ -68,14 +68,6 @@ void c2h(uint8_t c, char *r)
   r[1] = hex[c % 16];
 }
 
-// Be a good citizen and populate phpinfo()
-PHP_MINFO_FUNCTION(murmurhash3_info)
-{
-  php_info_print_table_start();
-  php_info_print_table_row(2, "Murmurhash3 support", "enabled");
-  php_info_print_table_row(2, "version", "diego:12/11/2011");
-  php_info_print_table_end();
-}
 
 PHP_FUNCTION(murmurhash3)
 {
@@ -102,4 +94,13 @@ PHP_FUNCTION(murmurhash3)
 
     // Return the result
     RETURN_STRING(result, 1);
+}
+
+// Be a good citizen and populate phpinfo()
+PHP_MINFO_FUNCTION(murmurhash3_info)
+{
+  php_info_print_table_start();
+  php_info_print_table_row(2, "murmurhash3 support", "enabled");
+  php_info_print_table_row(2, "version", "diego:12/11/2011");
+  php_info_print_table_end();
 }
