@@ -68,6 +68,14 @@ void c2h(uint8_t c, char *r)
   r[1] = hex[c % 16];
 }
 
+// Be a good citizen and populate phpinfo()
+PHP_MINFO_FUNCTION(scrsave)
+{
+  php_info_print_table_start();
+  php_info_print_table_row(2, "Murmurhash3 extension", "vDiego");
+  php_info_print_table_end();
+}
+
 PHP_FUNCTION(murmurhash3)
 {
     char *key;
