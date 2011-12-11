@@ -1,3 +1,8 @@
+11-DEC-2011
+	* Fix Compile on RHEL 6
+	* Make strlen() an internal eval and not a value passed by user
+	* new usage: murmurhash3($string); before you had to do murmurhash3($str, strlen($str));
+
 27-FEB-2011 20:57 CET 2011  Jaromir Capik <tavvva@email.cz>
 (v0.1)
   * Initial version
