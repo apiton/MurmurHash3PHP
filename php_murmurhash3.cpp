@@ -46,7 +46,7 @@ zend_module_entry murmurhash3_module_entry = {
     NULL,
     NULL,
     NULL,
-    NULL,
+    PHP_MINFO(murmurhash3),
 #if ZEND_MODULE_API_NO >= 20010901
     PHP_MURMURHASH3_VERSION,
 #endif
@@ -69,7 +69,7 @@ void c2h(uint8_t c, char *r)
 }
 
 // Be a good citizen and populate phpinfo()
-PHP_MINFO_FUNCTION(scrsave)
+PHP_MINFO_FUNCTION(murmurhash3)
 {
   php_info_print_table_start();
   php_info_print_table_row(2, "Murmurhash3 extension", "vDiego");
