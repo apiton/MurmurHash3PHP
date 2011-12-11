@@ -82,7 +82,7 @@ PHP_FUNCTION(murmurhash3)
     }
 
     // Calculate the hash
-    MurmurHash3_x64_128 ( key, key_len, (uint32_t)seed, output );
+    MurmurHash3_x64_128 ( key, strlen(key), (uint32_t)seed, output );
     output[MURMURHASH3_OUTPUT_LENGTH] = 0;
 
     // Convert to HEX
