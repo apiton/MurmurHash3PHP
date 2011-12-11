@@ -23,6 +23,8 @@
 #endif
 
 #include "php.h"
+#include "ext/standard/info.h"
+
 #include "php_murmurhash3.h"
 
 #include "MurmurHash3.h"
