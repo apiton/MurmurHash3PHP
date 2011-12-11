@@ -17,19 +17,17 @@
  *
  */
 
-extern "C" {
-  #ifdef HAVE_CONFIG_H
-    #include "config.h"
-  #endif
 
-  #include "php.h"
-  #include "php_murmurhash3.h"
-}
+#ifdef HAVE_CONFIG_H
+  #include "config.h"
+#endif
+
+#include "php.h"
+#include "php_murmurhash3.h"
 
 #include "MurmurHash3.h"
 
 #define MURMURHASH3_OUTPUT_LENGTH	16
-
 
 static zend_function_entry murmurhash3_functions[] = {
     PHP_FE(murmurhash3, NULL)
@@ -37,27 +35,21 @@ static zend_function_entry murmurhash3_functions[] = {
 };
 
 zend_module_entry murmurhash3_module_entry = {
-#if ZEND_MODULE_API_NO >= 20010901
     STANDARD_MODULE_HEADER,
-#endif
     PHP_MURMURHASH3_EXTNAME,
     murmurhash3_functions,
     NULL,
     NULL,
     NULL,
     NULL,
-    PHP_MINFO(murmurhash3_info),
-#if ZEND_MODULE_API_NO >= 20010901
+    PHP_MINFO(murmurhash3),
     PHP_MURMURHASH3_VERSION,
-#endif
     STANDARD_MODULE_PROPERTIES
 };
 
-extern "C" {
-  #ifdef COMPILE_DL_MURMURHASH3
-    ZEND_GET_MODULE(murmurhash3)
-  #endif
-}
+#ifdef COMPILE_DL_MURMURHASH3
+  ZEND_GET_MODULE(murmurhash3)
+#endif
 
 
 // Convert uint8 to hex representation (2 characters)
@@ -67,7 +59,6 @@ void c2h(uint8_t c, char *r)
   r[0] = hex[c / 16];
   r[1] = hex[c % 16];
 }
-
 
 PHP_FUNCTION(murmurhash3)
 {
@@ -97,10 +88,11 @@ PHP_FUNCTION(murmurhash3)
 }
 
 // Be a good citizen and populate phpinfo()
-PHP_MINFO_FUNCTION(murmurhash3_info)
+PHP_MINFO_FUNCTION(murmurhash3)
 {
   php_info_print_table_start();
   php_info_print_table_row(2, "murmurhash3 support", "enabled");
   php_info_print_table_row(2, "version", "diego:12/11/2011");
   php_info_print_table_end();
-}
+  DISPLAY_INI_ENTRIES();
+}     
