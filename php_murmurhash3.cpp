@@ -77,7 +77,7 @@ PHP_FUNCTION(murmurhash3)
     char result[MURMURHASH3_OUTPUT_LENGTH * 2 + 1];
 
     // Parse the input parameters
-    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "sl", &key, &seed) == FAILURE) {
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &key, &seed) == FAILURE) {
         RETURN_NULL();
     }
 
