@@ -95,7 +95,7 @@ PHP_MINFO_FUNCTION(murmurhash3_info)
 {
   php_info_print_table_start();
   php_info_print_table_row(2, "murmurhash3_support", "enabled");
-  php_info_print_table_row(2, "murmurhash3_version", "diego:12/11/2011");
+  php_info_print_table_row(2, "murmurhash3_version", "diego:08/25/2012");
   php_info_print_table_end();
   DISPLAY_INI_ENTRIES();
 }     
