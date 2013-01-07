@@ -65,19 +65,18 @@ void c2h(uint8_t c, char *r)
 PHP_FUNCTION(murmurhash3)
 {
     char *key;
-    int key_len;
     
     long seed;
     char output[MURMURHASH3_OUTPUT_LENGTH + 1];
     char result[MURMURHASH3_OUTPUT_LENGTH * 2 + 1];
 
     // Parse the input parameters
-    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s|l", &key, &key_len, &seed) == FAILURE) {
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s|l", &key, &seed) == FAILURE) {
         zend_error(E_ERROR, "murmurhash3 expects a string followed by an optional long!");
     }
 
     // Calculate the hash
-    MurmurHash3_x64_128 (key, key_len, (uint32_t)seed, output );
+    MurmurHash3_x64_128 (key, strlen(key), (uint32_t)seed, output );
     output[MURMURHASH3_OUTPUT_LENGTH] = 0;
 
     // Convert to HEX
@@ -95,7 +94,7 @@ PHP_MINFO_FUNCTION(murmurhash3_info)
 {
   php_info_print_table_start();
   php_info_print_table_row(2, "murmurhash3_support", "enabled");
-  php_info_print_table_row(2, "murmurhash3_version", "diego:08/25/2012");
+  php_info_print_table_row(2, "murmurhash3_version", "diego:12/11/2011");
   php_info_print_table_end();
   DISPLAY_INI_ENTRIES();
 }     
